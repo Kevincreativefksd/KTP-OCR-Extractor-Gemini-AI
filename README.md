@@ -27,7 +27,7 @@ Karena aplikasi ini sepenuhnya berbasis frontend, Anda tidak perlu melakukan ins
 
 1. **Clone repositori ini** atau unduh file `index.html`.
    ```bash
-   git clone [https://github.com/username-anda/ktp-ocr-gemini.git](https://github.com/username-anda/ktp-ocr-gemini.git)
+   git clone [https://github.com/Kevincreativefksd/KTP-OCR-Extractor-Gemini-AI](https://github.com/Kevincreativefksd/KTP-OCR-Extractor-Gemini-AI)
 
  * Buka file index.html langsung di browser Anda, atau gunakan ekstensi seperti Live Server di VS Code.
  * Dapatkan Gemini API Key:
@@ -63,7 +63,3 @@ AI diinstruksikan untuk merespons secara eksklusif dengan format JSON murni beri
 Jika Anda ingin mengembangkan aplikasi ini lebih lanjut (misalnya: menambahkan fitur crop gambar sebelum diunggah, atau mengintegrasikan ke backend PHP/Node.js), silakan buat Pull Request atau buka Issue.
 📄 Lisensi
 MIT License - Bebas digunakan, dimodifikasi, dan didistribusikan untuk keperluan pribadi maupun komersial.
-
-### Tips Tambahan:
-Jika Anda berencana mengunggahnya ke GitHub, Anda bisa menyesuaikan bagian URL clone (`[https://github.com/username-anda/](https://github.com/username-anda/)...`) dengan URL repositori Anda yang sebenarnya.
-
