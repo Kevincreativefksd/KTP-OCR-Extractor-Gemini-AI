@@ -55,9 +55,8 @@ Aplikasi web berbasis *Single Page Application* (SPA) yang berjalan 100% *client
    ```bash
    git clone [https://github.com/Kevincreativefksd/KTP-OCR-Extractor-Gemini-AI.git](https://github.com/Kevincreativefksd/KTP-OCR-Extractor-Gemini-AI.git)
    cd KTP-OCR-Extractor-Gemini-AI
-
-
-2. **Buka Aplikasi**
+   
+   2. **Buka Aplikasi**
 Cukup buka file index.html langsung di browser Anda atau gunakan ekstensi Live Server di VS Code.
 📋 Schema Data JSON
 Prompt AI diinstruksikan untuk merespons secara eksklusif dalam format JSON murni berikut:
@@ -80,3 +79,6 @@ Aplikasi ini TIDAK menyimpan, merekam, atau mentransfer foto maupun data hasil e
 Seluruh pemrosesan dilakukan di dalam memori lokal browser Anda dan dikirim langsung via HTTPS terenkripsi ke endpoint resmi Google API.
 📄 Lisensi
 Proyek ini dilindungi di bawah lisensi MIT License — bebas digunakan, dimodifikasi, dan didistribusikan
+  
+
+
