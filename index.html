@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,39 +11,38 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
-
-<body class="bg-slate-100 text-slate-800 min-h-screen p-4 md:p-8">
-    <div class="max-w-6xl mx-auto space-y-6">
+<body class="bg-slate-50 text-slate-800 min-h-screen p-4 md:p-8 font-sans">
+    <div class="max-w-7xl mx-auto space-y-6">
         
         <!-- Header -->
-        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <div>
-                <h1 class="text-2xl font-bold text-slate-900 flex items-center gap-2">
+        <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200 flex flex-col xl:flex-row xl:items-center justify-between gap-6">
+            <div class="w-full xl:w-auto">
+                <h1 class="text-2xl md:text-3xl font-bold text-slate-900 flex items-center gap-3">
                     <i class="fa-solid fa-id-card text-blue-600"></i> Extractor Data KTP
                 </h1>
-                <p class="text-sm text-slate-500 mt-1">Ekstrak data foto KTP secara instan menggunakan Gemini AI (Maks. 5 Foto)</p>
+                <p class="text-sm md:text-base text-slate-500 mt-2">Ekstrak data foto KTP secara instan menggunakan Gemini AI (Maks. 5 Foto)</p>
             </div>
             
             <!-- Model & API Key Input Container -->
-            <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+            <div class="flex flex-col sm:flex-row gap-4 w-full xl:w-auto flex-shrink-0">
                 <!-- Model Selector -->
                 <div class="w-full sm:w-64">
-                    <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Model Gemini</label>
-                    <select id="modelSelect" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none font-medium text-slate-700">
-                        <option value="gemini-3.5-flash-lite" selected>3.5 Flash Lite (RPM 15 | RPD 500) - Recommend</option>
-                        <option value="gemini-2.5-flash">2.5 Flash (RPM 5 | RPD 20) - Super Fast</option>
-                        <option value="gemini-3.5-flash">3.5 Flash (RPM 5 | RPD 20)</option>
-                        <option value="gemini-3.6-flash">3.6 Flash (RPM 5 | RPD 20)</option>
-                        <option value="gemini-3.8-flash">3.8 Flash (RPM 5 | RPD 20)</option>
+                    <label class="block text-xs font-semibold text-slate-600 uppercase mb-1.5 ml-1">Model Gemini</label>
+                    <select id="modelSelect" class="w-full px-4 py-2.5 border border-slate-300 rounded-xl text-sm bg-slate-50 hover:bg-white focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none font-medium text-slate-700 transition-all shadow-sm">
+                        <option value="gemini-3.5-flash-lite" selected>3.5 Flash Lite (Recommend)</option>
+                        <option value="gemini-2.5-flash">2.5 Flash (Super Fast)</option>
+                        <option value="gemini-3.5-flash">3.5 Flash</option>
+                        <option value="gemini-3.6-flash">3.6 Flash</option>
+                        <option value="gemini-3.8-flash">3.8 Flash</option>
                     </select>
                 </div>
                 
                 <!-- API Key Input -->
                 <div class="w-full sm:w-72">
-                    <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Gemini API Key</label>
+                    <label class="block text-xs font-semibold text-slate-600 uppercase mb-1.5 ml-1">Gemini API Key</label>
                     <div class="relative">
-                        <input type="password" id="apiKey" placeholder="Paste API Key di sini..." class="w-full pl-3 pr-10 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                        <button id="btnToggleApiKey" type="button" class="absolute right-3 top-2.5 text-slate-400 hover:text-slate-600">
+                        <input type="password" id="apiKey" placeholder="Paste API Key di sini..." class="w-full pl-4 pr-12 py-2.5 border border-slate-300 rounded-xl text-sm bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all shadow-sm">
+                        <button id="btnToggleApiKey" type="button" class="absolute right-3 top-2.5 text-slate-400 hover:text-blue-600 transition-colors p-1">
                             <i id="eyeIcon" class="fa-regular fa-eye"></i>
                         </button>
                     </div>
@@ -52,32 +50,39 @@
             </div>
         </div>
         
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Tambahan items-start penting agar panel kiri tidak melar ke bawah -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 items-start">
             
             <!-- Panel Upload & Preview -->
-            <div class="lg:col-span-5 space-y-4">
+            <!-- Tambahan sticky top-6 agar panel upload ikut turun saat scroll ke bawah di desktop -->
+            <div class="lg:col-span-5 space-y-4 sticky top-6">
                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-                    <div class="flex items-center justify-between mb-4">
-                        <h2 class="text-lg font-bold text-slate-800">1. Unggah Foto KTP</h2>
-                        <span id="fileCountBadge" class="text-xs bg-blue-100 text-blue-700 px-2.5 py-1 rounded-full font-semibold hidden">0 / 5</span>
+                    <div class="flex items-center justify-between mb-5">
+                        <h2 class="text-lg font-bold text-slate-800 flex items-center gap-2">
+                            <i class="fa-solid fa-cloud-arrow-up text-blue-500"></i> 1. Unggah Foto KTP
+                        </h2>
+                        <span id="fileCountBadge" class="text-xs bg-blue-100 text-blue-700 px-3 py-1.5 rounded-full font-bold hidden shadow-sm">0 / 5</span>
                     </div>
                     
-                    <div id="dropZone" class="border-2 border-dashed border-slate-300 hover:border-blue-500 rounded-xl p-6 text-center cursor-pointer transition bg-slate-50 hover:bg-blue-50/30">
+                    <div id="dropZone" class="border-2 border-dashed border-slate-300 hover:border-blue-500 rounded-xl p-8 text-center cursor-pointer transition-all bg-slate-50 hover:bg-blue-50/50 group">
                         <input type="file" id="ktpInput" accept="image/*" multiple class="hidden">
-                        <i class="fa-solid fa-cloud-arrow-up text-4xl text-slate-400 mb-2"></i>
-                        <p class="text-sm font-medium text-slate-700">Klik atau seret foto KTP ke sini</p>
-                        <p class="text-xs text-slate-400 mt-1">Format: JPG, JPEG, PNG (Maksimal 5 foto)</p>
+                        <div class="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm border border-slate-100 group-hover:scale-105 transition-transform">
+                            <i class="fa-solid fa-file-arrow-up text-2xl text-blue-500"></i>
+                        </div>
+                        <p class="text-sm font-semibold text-slate-700">Klik atau seret foto KTP ke sini</p>
+                        <p class="text-xs text-slate-500 mt-2 font-medium">Format: JPG, JPEG, PNG (Maks 5 foto)</p>
                     </div>
                     
                     <!-- Image Preview Container -->
-                    <div id="previewContainer" class="mt-4 hidden">
-                        <p class="text-xs font-semibold text-slate-500 mb-2">Pratinjau Foto dipilih:</p>
-                        <div id="previewGrid" class="grid grid-cols-3 sm:grid-cols-3 gap-2">
+                    <div id="previewContainer" class="mt-6 hidden">
+                        <p class="text-xs font-bold text-slate-500 mb-3 uppercase tracking-wider">Pratinjau Foto:</p>
+                        <!-- Ubah grid dari statis 3 menjadi responsif -->
+                        <div id="previewGrid" class="grid grid-cols-2 sm:grid-cols-3 gap-3">
                             <!-- Dynamic Thumbnails -->
                         </div>
                     </div>
                     
-                    <button id="btnProcess" disabled class="w-full mt-4 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-300 text-white font-semibold py-3 rounded-xl shadow-md transition flex items-center justify-center gap-2">
+                    <button id="btnProcess" disabled class="w-full mt-6 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 disabled:cursor-not-allowed text-white font-bold py-3.5 rounded-xl shadow-sm hover:shadow-md transition-all flex items-center justify-center gap-2">
                         <i class="fa-solid fa-bolt"></i>
                         <span id="btnProcessText">Ekstrak Data KTP</span>
                     </button>
@@ -86,38 +91,42 @@
             
             <!-- Panel Hasil Ekstraksi -->
             <div class="lg:col-span-7">
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-4">
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
-                        <h2 class="text-lg font-bold text-slate-800">2. Hasil Data</h2>
-                        <div class="flex gap-2">
-                            <button id="btnCopyCurrent" type="button" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-2 rounded-lg font-medium transition flex items-center gap-1.5 hidden">
-                                <i class="fa-regular fa-copy"></i> Salin KTP Ini
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200 space-y-6">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
+                        <h2 class="text-lg font-bold text-slate-800 flex items-center gap-2">
+                            <i class="fa-solid fa-list-check text-green-500"></i> 2. Hasil Ekstraksi
+                        </h2>
+                        <div class="flex flex-wrap gap-2">
+                            <button id="btnCopyCurrent" type="button" class="text-xs bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 px-4 py-2 rounded-lg font-bold transition-all shadow-sm flex items-center gap-2 hidden group">
+                                <i class="fa-regular fa-copy group-hover:text-blue-600"></i> Salin KTP Ini
                             </button>
-                            <button id="btnCopyAll" type="button" class="text-xs bg-slate-800 hover:bg-slate-900 text-white px-3 py-2 rounded-lg font-medium transition flex items-center gap-1.5 hidden">
-                                <i class="fa-regular fa-copy"></i> Salin Semua KTP
+                            <button id="btnCopyAll" type="button" class="text-xs bg-slate-800 hover:bg-slate-900 text-white px-4 py-2 rounded-lg font-bold transition-all shadow-sm flex items-center gap-2 hidden">
+                                <i class="fa-solid fa-copy"></i> Salin Semua
                             </button>
                         </div>
                     </div>
                     
                     <!-- Tab Navigation -->
-                    <div id="resultTabs" class="flex flex-wrap gap-2 hidden">
+                    <div id="resultTabs" class="flex flex-wrap gap-2 hidden bg-slate-50 p-1.5 rounded-xl border border-slate-100">
                         <!-- Dynamic Tabs -->
                     </div>
                     
                     <!-- Loading Indicator -->
-                    <div id="loading" class="hidden py-12 text-center space-y-2">
-                        <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-blue-600 border-t-transparent mb-2"></div>
-                        <p id="loadingText" class="text-sm text-slate-600 font-medium">Menganalisis foto KTP...</p>
+                    <div id="loading" class="hidden py-16 text-center space-y-4">
+                        <div class="inline-block animate-spin rounded-full h-10 w-10 border-4 border-blue-600 border-t-transparent shadow-sm"></div>
+                        <p id="loadingText" class="text-sm text-slate-600 font-bold animate-pulse">Menganalisis foto KTP...</p>
                     </div>
                     
                     <!-- Empty State -->
-                    <div id="emptyState" class="py-12 text-center text-slate-400 text-sm">
-                        <i class="fa-solid fa-id-card-clip text-4xl mb-2 text-slate-300"></i>
-                        <p>Belum ada data. Unggah foto KTP dan klik "Ekstrak Data KTP".</p>
+                    <div id="emptyState" class="py-16 flex flex-col items-center text-center">
+                        <div class="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center mb-4">
+                            <i class="fa-solid fa-id-card-clip text-3xl text-slate-300"></i>
+                        </div>
+                        <p class="text-slate-500 font-medium text-sm max-w-xs">Belum ada data. Silakan unggah foto KTP dan klik tombol Ekstrak.</p>
                     </div>
                     
                     <!-- Form Fields -->
-                    <div id="formFields" class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm hidden">
+                    <div id="formFields" class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm hidden">
                         <!-- Generated Dynamically via JS -->
                     </div>
                 </div>
@@ -129,5 +138,4 @@
     <!-- JavaScript App -->
     <script src="js/app.js"></script>
 </body>
-
 </html>

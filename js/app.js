@@ -42,15 +42,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Initialize Dynamic Form Fields
     fieldsConfig.forEach(field => {
         const wrapper = document.createElement('div');
-        if (field.fullWidth) wrapper.classList.add('md:col-span-2');
+        // Pastikan class kolom tersetting dengan benar (agar rapih saat desktop & mobile)
+        wrapper.className = field.fullWidth ? 'col-span-1 md:col-span-2' : 'col-span-1';
+        
         wrapper.innerHTML = `
-            <label class="block text-xs font-semibold text-slate-500 mb-1">${field.label}</label>
-            <div class="flex gap-1.5">
+            <label class="block text-xs font-bold text-slate-500 mb-1.5 ml-1">${field.label}</label>
+            <div class="flex gap-2">
                 <input type="text" id="field_${field.id}" placeholder="-" 
-                    class="w-full px-3 py-2 border border-slate-200 rounded-lg bg-slate-50 font-medium text-slate-800 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                <button type="button" class="btn-copy-single px-3 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg border border-slate-200 transition text-xs font-medium flex items-center justify-center" 
+                    class="w-full px-3.5 py-2.5 border border-slate-200 rounded-lg bg-slate-50 font-semibold text-slate-800 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all shadow-sm">
+                <button type="button" class="btn-copy-single px-4 bg-white hover:bg-slate-50 text-slate-600 rounded-lg border border-slate-200 transition-all shadow-sm text-sm font-medium flex items-center justify-center group" 
                     data-target="field_${field.id}" title="Salin">
-                    <i class="fa-regular fa-copy"></i>
+                    <i class="fa-regular fa-copy group-hover:text-blue-600 transition-colors"></i>
                 </button>
             </div>
         `;
