@@ -5,12 +5,6 @@
 ![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 ![Frontend](https://img.shields.io/badge/Stack-HTML5%20%7C%20JS%20%7C%20TailwindCSS-brightgreen?style=for-the-badge)
 
-# KTP OCR Extractor - Gemini AI
-
-[![Live Demo](https://img.shields.io/badge/Demo-Live%20Web-blue?style=for-the-badge&logo=github)](https://kevincreativefksd.github.io/KTP-OCR-Extractor-Gemini-AI/)
-![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
-![Frontend](https://img.shields.io/badge/Stack-HTML5%20%7C%20JS%20%7C%20TailwindCSS-brightgreen?style=for-the-badge)
-
 Aplikasi web berbasis *Single Page Application* (SPA) yang berjalan 100% *client-side* untuk mengekstrak data dari foto Kartu Tanda Penduduk (KTP) Indonesia secara otomatis, presisi, dan aman menggunakan **Google Gemini AI**.
 
 🌐 **Live Web App:** [https://kevincreativefksd.github.io/KTP-OCR-Extractor-Gemini-AI/](https://kevincreativefksd.github.io/KTP-OCR-Extractor-Gemini-AI/)
@@ -35,7 +29,7 @@ Aplikasi web berbasis *Single Page Application* (SPA) yang berjalan 100% *client
    - Dapatkan API Key gratis di [Google AI Studio](https://aistudio.google.com/).
    - Tempelkan (*paste*) pada kolom **Gemini API Key** di bagian atas.
 3. **Unggah Foto KTP**: Pilih atau seret (*drag & drop*) foto KTP (format JPG, JPEG, PNG).
-4. **Ekstrak Data**: Klik tombol **Ekstrak Data KTP** dan tunggu beberapa detik hingga data terisi.
+4. **Ekstrak Data**: Klik tombol **Ekstrak Data KTcP** dan tunggu beberapa detik hingga data terisi.
 5. **Salin Hasil**: Gunakan tombol salin per kolom atau tombol **Salin Semua (Format Teks)**.
 
 ---
@@ -56,9 +50,10 @@ Aplikasi web berbasis *Single Page Application* (SPA) yang berjalan 100% *client
    git clone [https://github.com/Kevincreativefksd/KTP-OCR-Extractor-Gemini-AI.git](https://github.com/Kevincreativefksd/KTP-OCR-Extractor-Gemini-AI.git)
    cd KTP-OCR-Extractor-Gemini-AI
    
-   2. **Buka Aplikasi**
+      2 **Buka Aplikasi**
 Cukup buka file index.html langsung di browser Anda atau gunakan ekstensi Live Server di VS Code.
-📋 Schema Data JSON
+
+##📋 Schema Data JSON
 Prompt AI diinstruksikan untuk merespons secara eksklusif dalam format JSON murni berikut:
   {
   "nik": "",
@@ -73,11 +68,12 @@ Prompt AI diinstruksikan untuk merespons secara eksklusif dalam format JSON murn
   "kewarganegaraan": "",
   "berlaku_hingga": ""
 }
-🔒 Privasi & Keamanan Data (PII)
+##🔒 Privasi & Keamanan Data (PII)
+
 Data pada Kartu Tanda Penduduk (KTP) merupakan Personally Identifiable Information (PII) yang bersifat sensitif.
 Aplikasi ini TIDAK menyimpan, merekam, atau mentransfer foto maupun data hasil ekstraksi ke server pihak ketiga mana pun.
 Seluruh pemrosesan dilakukan di dalam memori lokal browser Anda dan dikirim langsung via HTTPS terenkripsi ke endpoint resmi Google API.
-📄 Lisensi
+##📄 Lisensi
 Proyek ini dilindungi di bawah lisensi MIT License — bebas digunakan, dimodifikasi, dan didistribusikan
   
 
