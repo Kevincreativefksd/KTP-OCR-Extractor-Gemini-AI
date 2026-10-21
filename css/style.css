@@ -5,6 +5,13 @@
     transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
+/* Tab Aktif Hasil KTP */
+.tab-active {
+    background-color: #2563eb !important;
+    color: #ffffff !important;
+    border-color: #2563eb !important;
+}
+
 /* Scrollbar Customization */
 ::-webkit-scrollbar {
     width: 6px;
