@@ -30,3 +30,12 @@
 ::-webkit-scrollbar-thumb:hover {
     background: #94a3b8;
 }
+
+/* App Footer Custom Styles */
+.app-footer__container {
+    /* Mencegah horizontal overflow dan memastikan posisi tidak menimpa elemen atasnya */
+    display: block;
+    width: 100%;
+    clear: both;
+    margin-top: 1.5rem;
+}

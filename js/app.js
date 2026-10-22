@@ -365,4 +365,41 @@ Jika ada bidang yang tidak jelas atau kosong, beri nilai string kosong "". Tulis
             alert('Seluruh data KTP berhasil disalin ke clipboard!');
         });
     });
+    
+        // 7. Footer Auto Year Logic
+    const footerYearElement = document.getElementById('footerYear');
+    if (footerYearElement) {
+        footerYearElement.textContent = new Date().getFullYear();
+    }
+    
+    // ============================================
+    // Real-time Clock Logic untuk Header
+    // ============================================
+    function updateClock() {
+        const clockElement = document.querySelector('#realtimeClock span');
+        if (!clockElement) return;
+
+        const now = new Date();
+        
+        const hari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+        const bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+
+        const namaHari = hari[now.getDay()];
+        const tanggal = now.getDate();
+        const namaBulan = bulan[now.getMonth()];
+        const tahun = now.getFullYear();
+
+        const jam = String(now.getHours()).padStart(2, '0');
+        const menit = String(now.getMinutes()).padStart(2, '0');
+        const detik = String(now.getSeconds()).padStart(2, '0');
+
+        const timeString = `${namaHari}, ${tanggal} ${namaBulan} ${tahun} - ${jam}:${menit}:${detik} WIB`;
+        
+        clockElement.textContent = timeString;
+    }
+
+    // Eksekusi fungsi jam
+    updateClock();
+    setInterval(updateClock, 1000);
+    
 });
